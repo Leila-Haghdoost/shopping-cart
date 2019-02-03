@@ -3,6 +3,7 @@
 		<li class="list-group-item" v-for="item in items" :key="item.id">
 			{{item.title}} - $ {{item.price}}
 			<button
+				@click="$emit('remove-from-cart', item)"
 				class="btn badge badge-danger float-right"
 			>Remove From Cart</button>
 		</li>
@@ -11,7 +12,7 @@
 
 <script>
 export default {
-	props: ["items"]
+	props: ["items", "removeFromCart"]
 };
 </script>
 

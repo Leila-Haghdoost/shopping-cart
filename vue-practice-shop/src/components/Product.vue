@@ -3,14 +3,18 @@
 		<div class="crd-body">
 			<h5 class="text-center card-title" Product name>{{product.title}}</h5>
 			<p class="text-center text-muted card-text display-4">$ {{Number(product.price).toFixed()}}</p>
-			<button @click="$emit('add-to-cart', product)" class="btn btn-primary form-control">Add To Cart</button>
+			<button
+				:disabled="isIncart"
+				@click="$emit('add-to-cart', product)"
+				class="btn btn-primary form-control"
+			>{{isIncart ? 'Added to cart' : 'Add to cart'}}</button>
 		</div>
 	</div>
 </template>
 
 <script>
 export default {
-	props: ["product"]
+	props: ["product", "isIncart"]
 };
 </script>
 
